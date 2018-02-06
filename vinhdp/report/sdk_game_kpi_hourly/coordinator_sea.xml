@@ -1,0 +1,69 @@
+<coordinator-app name="SPARK :: VDP :: ${group} - ${gameCode} - ${type}" frequency="${coord:minutes(60)}"
+        start="${startDate}" end="${endDate}"
+        timezone="UTC"
+        xmlns="uri:oozie:coordinator:0.4"
+        xmlns:sla="uri:oozie:sla:0.2">
+
+    <controls>
+        <timeout>60</timeout>
+        <concurrency>${coordConcurrency}</concurrency>
+    </controls>
+
+    <datasets>
+        <dataset name="dataset1" frequency="${coord:hours(1)}" initial-instance="${startDate}" timezone="Asia/Ho_Chi_Minh">
+            <uri-template>${inputPath}/${YEAR}-${MONTH}-${DAY}/${gameCodeU}_Login_InfoLog/${gameCodeU}_Login_InfoLog-${YEAR}-${MONTH}-${DAY}_000${HOUR}</uri-template>
+            <done-flag></done-flag>
+        </dataset>
+
+        <dataset name="dataset2" frequency="${coord:hours(1)}" initial-instance="${startDate}" timezone="Asia/Ho_Chi_Minh">
+            <uri-template>${inputPath}/${YEAR}-${MONTH}-${DAY}/Log_${gameCodeU}_DBGAdd/Log_${gameCodeU}_DBGAdd-${YEAR}-${MONTH}-${DAY}_000${HOUR}</uri-template>
+            <done-flag></done-flag>
+        </dataset>
+
+        <dataset name="dataset4" frequency="${coord:hours(1)}" initial-instance="${startDate}" timezone="Asia/Ho_Chi_Minh">
+            <uri-template>${inputPath}/${YEAR}-${MONTH}-${DAY}</uri-template>
+            <done-flag></done-flag>
+        </dataset>
+    </datasets>
+
+    <input-events>
+        <data-in name="datasetEvent1" dataset="dataset1">
+            <instance>${coord:current((coord:tzOffset() / 60) - 8)}</instance>
+        </data-in>
+        <data-in name="datasetEvent2" dataset="dataset2">
+            <instance>${coord:current((coord:tzOffset() / 60) - 8)}</instance>
+        </data-in>
+        <data-in name="datasetEvent4" dataset="dataset4">
+            <instance>${coord:current((coord:tzOffset() / 60) - 8)}</instance>
+        </data-in>
+    </input-events>
+    
+    <action>
+        <workflow>
+            <app-path>${bundleApplicationPath}</app-path>
+            <configuration>
+                <property>
+                    <name>logDate</name>
+                    <value>${coord:formatTime(coord:dateOffset(coord:nominalTime(), -1, 'HOUR'), "yyyy-MM-dd")}</value>
+                </property>
+                <property>
+                    <name>inputHourlyPath</name>
+                    <value>${coord:dataIn('datasetEvent4')}</value>
+                </property>
+                <property>
+                    <name>hourly</name>
+                    <value>${coord:formatTime(coord:dateOffset(coord:nominalTime(), -1, 'HOUR'), "HH_mm")}</value>
+                </property>
+                <property>
+                    <name>nominalTime</name>
+                    <value>${coord:nominalTime()}</value>
+                </property>
+				<property>
+                    <name>actualTime</name>
+                    <value>${coord:actualTime()}</value>
+                </property>
+            </configuration>
+        </workflow>
+    </action>
+</coordinator-app>
+

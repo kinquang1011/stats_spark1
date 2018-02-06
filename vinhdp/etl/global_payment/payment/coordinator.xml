@@ -1,0 +1,50 @@
+<coordinator-app name="SPARK :: VDP :: ${group} - ${type} - ${logType}" frequency="${coord:days(1)}"
+        start="${startDate}" end="${endDate}"
+        timezone="${coordTimeZone}"
+        xmlns="uri:oozie:coordinator:0.4"
+        xmlns:sla="uri:oozie:sla:0.2">
+
+    <controls>
+        <timeout>${coordTimeout}</timeout>
+        <concurrency>${coordConcurrency}</concurrency>
+    </controls>
+
+    <datasets>
+        <dataset name="convert" frequency="${coord:days(1)}" initial-instance="${startDate}" timezone="${coordTimeZone}">
+            <uri-template>${rawPath}/${YEAR}${MONTH}${DAY}/FW2/ZingXuConvert/FW_ZingXuConvert_${YEAR}${MONTH}${DAY}.csv.gz</uri-template>
+            <done-flag></done-flag>
+        </dataset>
+        <dataset name="convertDetail" frequency="${coord:days(1)}" initial-instance="${startDate}" timezone="${coordTimeZone}">
+            <uri-template>${rawPath}/${YEAR}${MONTH}${DAY}/FW2/ZingXuConvertDetail/ZingXuConvertDetail_${YEAR}${MONTH}${DAY}.csv.gz</uri-template>
+            <done-flag></done-flag>
+        </dataset>
+    </datasets>
+
+    <input-events>
+        <data-in name="convertEvent" dataset="convert">
+            <start-instance>${coord:current(-2)}</start-instance>
+            <end-instance>${coord:current(-1)}</end-instance>
+        </data-in>
+        <data-in name="convertDetailEvent" dataset="convertDetail">
+            <start-instance>${coord:current(-2)}</start-instance>
+            <end-instance>${coord:current(-1)}</end-instance>
+        </data-in>
+    </input-events>
+
+    <action>
+        <workflow>
+            <app-path>${bundleApplicationPath}/${logType}</app-path>
+            <configuration>
+                <property>
+                    <name>logDate</name>
+                    <value>${coord:formatTime(coord:dateOffset(coord:nominalTime(), -1, 'DAY'), "yyyy-MM-dd")}</value>
+                </property>
+                <property>
+                    <name>nominalTime</name>
+                    <value>${coord:nominalTime()}</value>
+                </property>
+            </configuration>
+        </workflow>
+    </action>
+</coordinator-app>
+

@@ -1,0 +1,259 @@
+USE APACHE SPARK & OOZIE
+
+1. Check if log copy done go to 2
+2. load all file into RDD
+3. foreach line in RDD
+	2.1 split line by ","
+	2.2 map (2.1) and convert unix_timestamp to mm-dd => log_date => [log_date,user_id,item_name]
+	2.3 convert to DF
+	2.4 select DF with condition: item_name = 'book-x' and '08-10' <= log_date  and 'log_date' <= '08-12'
+4. END
+
+Notes: Step 1 automatically do by OOZIE every day
+
+
+===================================================================================================================
+val format = new java.text.SimpleDateFormat("yyyy-MM-dd")
+val formatTime = new java.text.SimpleDateFormat("yyyy-MM-dd mm:ss")
+
+val df = sc.textFile("/user/fairy/vinhdp/sample-data-test-email.csv").map(_.split(",")).filter(row=>row(0) != "Date Recruited").map(row => (format.format(formatTime.parse(row(0)))
+,row(1),row(2),row(3),row(4))).toDF.selectExpr("_1 as date", "_2 sex", "_3 as age","_4 as province", "_5 as country")
+
+1. How many people are older than Mark Zuckerberg
+
+df.where("age > 32").count
+
+=> 1842
+
+2. How many people are living in Ho Chi Minh City
+
+df.where("lower(province) like '%minh%' or lower(province) like '%hcm%'").count
+
+=> 2515 
+
+3. Who live in Ho Chi Minh City, age less than 20 and gender is “Female”
+
+df.where("(lower(province) like '%minh%' or lower(province) like '%hcm%') and age < 20 and lower(sex) like '%female%' ").show(100, false)
+
++----------+------+---+---------------------+-------+
+|date      |sex   |age|province             |country|
++----------+------+---+---------------------+-------+
+|2016-01-19|Female|13 |Hồ Chí Minh          |Vietnam|
+|2016-01-19|Female|19 |Thành phố Hồ Chí Minh|Vietnam|
+|2016-01-18|Female|18 |Ho Chi Minh          |Vietnam|
+|2016-01-18|Female|19 |ho chi minh          |Vietnam|
+|2016-01-18|Female|19 |Thành phố Hồ Chí Minh|Vietnam|
+|2016-01-18|Female|18 |tp hcm               |Vietnam|
+|2016-01-17|Female|19 |Tp. HCM              |Vietnam|
+|2016-01-17|Female|16 |Hồ Chí Minh          |Vietnam|
+|2016-01-17|Female|16 |TP Hồ Chí Minh       |Vietnam|
+|2016-01-17|Female|12 |Ho Chi Minh          |Vietnam|
+|2016-01-17|Female|16 |Hồ Chí Minh          |Vietnam|
+|2016-01-17|Female|17 |ho chi minh city     |Vietnam|
+|2016-01-17|Female|19 |Tp. HCM              |Vietnam|
+|2016-01-16|Female|19 |hcm                  |Vietnam|
+|2016-01-16|Female|18 |tp hcm               |Vietnam|
+|2016-01-16|Female|16 |Hồ Chí Minh          |Vietnam|
+|2016-01-16|Female|17 |tphcm                |Vietnam|
+|2016-01-16|Female|18 |tp hcm               |Vietnam|
+|2016-01-16|Female|16 |Hồ Chí Minh          |Vietnam|
+|2016-01-16|Female|16 |Hồ Chí Minh          |Vietnam|
+|2016-01-16|Female|18 |Thành phố Hồ Chí Minh|Vietnam|
+|2016-01-15|Female|18 |ho chi minh          |Vietnam|
+|2016-01-15|Female|19 |Hồ Chí Minh          |Vietnam|
+|2016-01-15|Female|15 |Hồ Chí Minh          |Vietnam|
+|2016-01-15|Female|14 |Thành phố Hồ Chí Minh|Vietnam|
+|2015-12-28|Female|17 |tp hcm               |Vietnam|
+|2015-12-28|Female|18 |TP Ho Chi Minh       |Vietnam|
+|2015-12-27|Female|18 |tp hcm               |Vietnam|
+|2015-12-27|Female|18 |tphcm                |Vietnam|
+|2015-12-26|Female|19 |Hồ Chí Minh          |Vietnam|
+|2015-12-26|Female|19 |tp hcm               |Vietnam|
+|2015-12-26|Female|13 |TP Hồ Chí Minh       |Vietnam|
+|2015-12-26|Female|12 |Hồ Chí Minh          |Vietnam|
+|2015-12-26|Female|14 |Thành phố Hồ Chí Minh|Vietnam|
+|2015-12-25|Female|16 |Hồ Chí Minh          |Vietnam|
+|2015-12-25|Female|14 |tphcm                |Vietnam|
+|2015-12-24|Female|15 |Hồ Chí Minh          |Vietnam|
+|2015-12-24|Female|19 |Thành phố Hồ Chí Minh|Vietnam|
+|2015-12-24|Female|13 |Tp. HCM              |Vietnam|
+|2015-12-24|Female|14 |Thành phố Hồ Chí Minh|Vietnam|
+|2015-12-23|Female|18 |Tp. Hồ Chí Minh    |Vietnam|
+|2015-12-23|Female|15 |HCM                  |Vietnam|
+|2015-12-23|Female|15 |Hồ Chí Minh          |Vietnam|
+|2015-12-23|Female|18 |tp hcm               |Vietnam|
+|2015-12-23|Female|13 |Ho Chi Minh          |Vietnam|
+|2015-12-23|Female|11 |Thành phố Hồ Chí Minh|Vietnam|
+|2015-12-23|Female|18 |Ho Chi Minh          |Vietnam|
+|2015-12-23|Female|19 |Tp. HCM              |Vietnam|
+|2015-12-20|Female|18 |TP Hồ Chí Minh       |Vietnam|
+|2015-12-20|Female|19 |TP Ho Chi Minh       |Vietnam|
+|2015-12-20|Female|12 |Tp. HCM              |Vietnam|
+|2015-12-20|Female|19 |Hồ Chí Minh          |Vietnam|
+|2015-12-20|Female|11 |HCM                  |Vietnam|
+|2015-12-20|Female|19 |tp hcm               |Vietnam|
+|2015-12-20|Female|18 |tp hcm               |Vietnam|
+|2015-12-18|Female|19 |Ho Chi Minh          |Vietnam|
+|2015-12-18|Female|11 |TP Hồ Chí Minh       |Vietnam|
+|2015-12-14|Female|14 |HCM                  |Vietnam|
+|2015-12-14|Female|18 |TP Hồ Chí Minh       |Vietnam|
+|2015-12-14|Female|14 |Hồ Chí Minh          |Vietnam|
+|2015-12-14|Female|19 |TP Hồ Chí Minh       |Vietnam|
+|2015-12-13|Female|18 |Ho Chi Minh          |Vietnam|
+|2015-12-13|Female|18 |tp hồ chí minh       |Vietnam|
+|2015-12-13|Female|19 |TP.HCM               |Vietnam|
+|2015-12-13|Female|8  |Ho Chi Minh          |Vietnam|
+|2015-12-13|Female|19 |Hồ Chí Minh          |Vietnam|
+|2015-12-13|Female|17 |TP Ho Chi Minh       |Vietnam|
+|2015-12-13|Female|15 |Thành phố Hồ Chí Minh|Vietnam|
+|2015-12-12|Female|13 |TP Ho Chi Minh       |Vietnam|
+|2015-12-12|Female|13 |Thành phố Hồ Chí Minh|Vietnam|
+|2015-12-12|Female|13 |TP.HCM               |Vietnam|
+|2015-12-11|Female|18 |tp hcm               |Vietnam|
+|2015-12-11|Female|19 |Hồ Chí Minh          |Vietnam|
+|2015-12-11|Female|16 |Hồ Chí Minh          |Vietnam|
+|2015-12-11|Female|12 |HCM                  |Vietnam|
+|2015-12-11|Female|13 |Thành phố Hồ Chí Minh|Vietnam|
+|2015-12-11|Female|12 |hồ chí minh          |Vietnam|
+|2015-12-11|Female|14 |Tp. HCM              |Vietnam|
+|2015-12-11|Female|18 |TP.HCM               |Vietnam|
+|2015-12-11|Female|19 |Hồ Chí Minh          |Vietnam|
+|2015-12-11|Female|16 |Hồ Chí Minh          |Vietnam|
+|2015-12-11|Female|15 |TP Ho Chi Minh       |Vietnam|
++----------+------+---+---------------------+-------+
+
+4. Who recruited on weekend from 6 PM to 10 PM, live in Ho Chi Minh City or Ha Noi City
+
+val format = new java.text.SimpleDateFormat("yyyy-MM-EEE mm:ss")
+val time = new java.text.SimpleDateFormat("mm:ss")
+
+
+val df = sc.textFile("/user/fairy/vinhdp/sample-data-test-email.csv").map(_.split(",")).filter(row=>row(0) != "Date Recruited").map(row => (format.format(formatTime.parse(row(0)))
+,time.format(formatTime.parse(row(0))),row(1),row(2),row(3),row(4))).toDF.selectExpr("_1 as date", "_2 as hour", "_3 sex", "_4 as age","_5 as province", "_6 as country")
+
+df.where("(lower(province) like '%nội%' or lower(province) like '%hn%' or lower(province) like '%noi%' or lower(province) like '%minh%' or lower(province) like '%hcm%') and (date like '%Sun%' or date like '%Sat%') and hour >= '18' and hour <= '22'").select("date","sex","age", "province", "country").show(1000,false)
+
++-----------------+------+---+---------------------+-------+
+|date             |sex   |age|province             |country|
++-----------------+------+---+---------------------+-------+
+|2016-01-Sun 21:09|Male  |19 |Ha Noi               |Vietnam|
+|2016-01-Sun 19:29|Male  |28 |ha noi               |Vietnam|
+|2016-01-Sun 18:45|Male  |42 |TP Ho Chi Minh       |Vietnam|
+|2016-01-Sun 18:32|Male  |34 |Ho Chi Minh          |Vietnam|
+|2016-01-Sun 18:14|Male  |24 |TP Hồ Chí Minh       |Vietnam|
+|2016-01-Sun 18:04|Male  |33 |Ho Chi Minh          |Vietnam|
+|2016-01-Sat 20:47|Male  |21 |Ha Noi               |Vietnam|
+|2016-01-Sat 20:39|Male  |24 |Hà Nội               |Vietnam|
+|2016-01-Sat 19:56|Male  |30 |tp hcm               |Vietnam|
+|2016-01-Sat 19:49|Male  |26 |Hanoi                |Vietnam|
+|2016-01-Sat 19:42|Male  |25 |Hà Nội               |Vietnam|
+|2016-01-Sat 19:25|Male  |25 |Ha Noi               |Vietnam|
+|2016-01-Sat 19:17|Male  |25 |Ho Chi Minh          |Vietnam|
+|2016-01-Sat 19:11|Male  |29 |Hồ Chí Minh          |Vietnam|
+|2016-01-Sat 18:58|Male  |21 |tphcm                |Vietnam|
+|2016-01-Sat 18:56|Male  |20 |Ha Noi               |Vietnam|
+|2016-01-Sat 18:28|Female|19 |hcm                  |Vietnam|
+|2016-01-Sat 18:26|Male  |19 |Tp. Hồ Chí Minh    |Vietnam|
+|2016-01-Sat 18:11|Male  |21 |Hà Nội               |Vietnam|
+|2016-01-Sat 18:06|Male  |22 |Hà Nội               |Vietnam|
+|2016-01-Sat 18:04|Female|23 |Hồ Chí Minh          |Vietnam|
+|2015-12-Sat 21:25|Male  |35 |HCM                  |Vietnam|
+|2015-12-Sat 21:02|Male  |35 |Ho Chi Minh          |Vietnam|
+|2015-12-Sat 20:38|Male  |24 |Hồ Chí Minh          |Vietnam|
+|2015-12-Sat 20:22|Male  |19 |Hà Nội               |Vietnam|
+|2015-12-Sat 20:13|Male  |21 |TP Hồ Chí Minh       |Vietnam|
+|2015-12-Sat 19:55|Male  |24 |tp hcm               |Vietnam|
+|2015-12-Sat 19:49|Male  |26 |Thành phố Hồ Chí Minh|Vietnam|
+|2015-12-Sat 19:48|Male  |25 |Hồ Chí Minh          |Vietnam|
+|2015-12-Sat 19:44|Male  |30 |hà nội               |Vietnam|
+|2015-12-Sat 19:43|Male  |12 |Ha Noi               |Vietnam|
+|2015-12-Sat 19:43|Male  |28 |Hà Nội               |Vietnam|
+|2015-12-Sat 19:41|Male  |25 |Ha Noi               |Vietnam|
+|2015-12-Sat 19:39|Male  |24 |TP Hồ Chí Minh       |Vietnam|
+|2015-12-Sat 19:37|Male  |21 |Ha Noi               |Vietnam|
+|2015-12-Sat 19:33|Male  |31 |Ho Chi Minh          |Vietnam|
+|2015-12-Sat 19:30|Male  |20 |Ha Noi               |Vietnam|
+|2015-12-Sat 19:27|Male  |20 |Hà Nội               |Vietnam|
+|2015-12-Sat 18:42|Female|24 |ha noi               |Vietnam|
+|2015-12-Sat 18:25|Male  |24 |HCM                  |Vietnam|
+|2015-12-Sat 18:23|Male  |27 |Ha Noi               |Vietnam|
+|2015-12-Sat 18:21|Male  |26 |Ha Noi               |Vietnam|
+|2015-12-Sat 18:20|Male  |20 |Ha Noi               |Vietnam|
+|2015-12-Sat 18:16|Male  |21 |Hồ Chí Minh          |Vietnam|
+|2015-12-Sat 18:05|Male  |33 |tp hcm               |Vietnam|
+|2015-12-Sat 18:02|Male  |30 |ho chi minh city     |Vietnam|
+|2015-12-Sun 21:58|Male  |19 |Ha Noi               |Vietnam|
+|2015-12-Sun 21:55|Male  |25 |HCM                  |Vietnam|
+|2015-12-Sun 21:45|Male  |19 |Ho Chi Minh          |Vietnam|
+|2015-12-Sun 20:31|Male  |31 |Ho Chi Minh          |Vietnam|
+|2015-12-Sun 20:05|Male  |26 |Ha Noi               |Vietnam|
+|2015-12-Sun 19:47|Male  |24 |Ha Noi               |Vietnam|
+|2015-12-Sun 19:38|Male  |28 |Hà Nội               |Vietnam|
+|2015-12-Sun 19:18|Male  |27 |tp hcm               |Vietnam|
+|2015-12-Sun 19:12|Male  |29 |Hanoi                |Vietnam|
+|2015-12-Sun 19:01|Male  |23 |Ha Noi               |Vietnam|
+|2015-12-Sun 18:34|Female|22 |Ha Noi               |Vietnam|
+|2015-12-Sun 18:31|Male  |25 |Hồ Chí Minh          |Vietnam|
+|2015-12-Sun 18:29|Male  |22 |Hồ Chí Minh          |Vietnam|
+|2015-12-Sun 18:23|Male  |29 |Hà Nội               |Vietnam|
+|2015-12-Sun 18:17|Male  |28 |hanoi                |Vietnam|
+|2015-12-Sun 18:10|Female|25 |Ha Noi               |Vietnam|
+|2015-12-Sun 18:07|Male  |29 |Ha Noi               |Vietnam|
+|2015-12-Sat 20:38|Female|23 |Ha Noi               |Vietnam|
+|2015-12-Sat 20:37|Male  |25 |Ha Noi               |Vietnam|
+|2015-12-Sat 20:20|Male  |21 |tp hcm               |Vietnam|
+|2015-12-Sat 19:42|Male  |22 |tp hcm               |Vietnam|
+|2015-12-Sat 19:40|Male  |29 |Ha Noi               |Vietnam|
+|2015-12-Sat 19:28|Male  |28 |Ho Chi Minh          |Vietnam|
+|2015-12-Sat 18:51|Male  |18 |HCM                  |Vietnam|
+|2015-12-Sat 18:51|Male  |20 |Hà Nội               |Vietnam|
+|2015-12-Sat 18:47|Male  |31 |Ha Noi               |Vietnam|
+|2015-12-Sat 18:43|Female|35 |HCM                  |Vietnam|
+|2015-12-Sat 18:34|Male  |30 |Ha Noi               |Vietnam|
+|2015-12-Sat 18:31|Male  |21 |ha noi               |Vietnam|
+|2015-12-Sat 18:25|Male  |25 |Ha Noi               |Vietnam|
+|2015-12-Sat 18:25|Male  |32 |HCM                  |Vietnam|
+|2015-12-Sat 18:24|Male  |24 |tp hcm               |Vietnam|
+|2015-12-Sat 18:23|Male  |22 |hà nội               |Vietnam|
+|2015-12-Sat 18:21|Female|29 |HCM                  |Vietnam|
+|2015-12-Sat 18:18|Female|34 |HCM                  |Vietnam|
+|2015-12-Sat 18:06|Male  |25 |tp hcm               |Vietnam|
++-----------------+------+---+---------------------+-------+
+
+===================================================================================================================
+USE MYSQL
+
+/* create view for purcharses */
+CREATE VIEW v_purcharses AS
+SELECT distinct(user_id), DATE_FORMAT(created_at, '%Y-%m-01') as month
+FROM purchases
+ORDER BY created_at;
+
+/*create view uniq paying user */
+CREATE VIEW v_uniq_paying AS
+SELECT count(user_id) as uniq, month 
+FROM v_purcharses 
+GROUP BY month;
+
+/* first charge */
+CREATE VIEW v_first_charge AS
+SELECT user_id, month
+FROM v_purcharses
+GROUP BY user_id;
+
+/* first charge count */
+CREATE VIEW v_first_charge_count AS
+SELECT count(user_id) as first_charge, month
+FROM v_first_charge
+GROUP BY month;
+
+/* join together */
+CREATE VIEW monthly_report AS
+SELECT p.month, uniq,
+		(case when first_charge is null THEN 0 ELSE first_charge END) as first_time_buyers,
+        (case when first_charge is null THEN uniq ELSE uniq - first_charge END) as returned_buyers
+FROM v_uniq_paying as p
+LEFT JOIN v_first_charge_count as f
+ON p.month = f.month;
+
+SELECT * FROM monthly_report;

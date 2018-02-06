@@ -1,0 +1,192 @@
+10001,a1,Active users in 1 day (A1)
+10007,a7,Active users in 7 day (A7)
+10030,a30,Active users in 30 day (A30)
+10060,a60,Active users in 60 day (A60)
+10090,a90,Active users in 90 day (A90)
+10017,aw,Active User in 1 Calendar Week (WAU)
+10031,am,Active User in 1 Calendar Month (MAU)
+10003,a3,Active users in 3 days (A3)
+10014,a14,Active users in 14 days (A14)
+11001,n1,New register in a day
+11007,n7,New  register in 7 day
+11030,n30,New register in 30 day
+11060,n60,New register in 60 day
+11090,n90,New register in 90 day
+11017,nw,New register in a calendar week
+11031,nm,New register in a calendar month
+11003,n3,New  register in 3 days
+11014,n14,New  register in 14 days
+12001,,Unique role register in a day
+12007,,Unique role register in 7 day
+12030,,Unique role register in 30 day
+12031,,Unique role register in a month
+12060,,Unique role register in 60 day
+12090,,Unique role register in 90 day
+13001,rlc1,Unique User login in previous day and continuing login in calculate day
+13007,rlc7,Unique User login in previous 7 day and continuing login in this 7 days
+13030,rlc30,Unique User login in previous 30 day and continuing login in this 30 days
+13031,rlcm,Unique User login in previous month and continuing login in calculate month
+13060,rlc60,Unique User login in previous 60 day and continuing login in this 60 days
+13090,rlc90,Unique User login in previous 90 day and continuing login in this 90 days
+29001,rr1,"Retention Rate A1.
+retplaying1 / previous A1 (0.00%)"
+29007,rr7,"Retention Rate A7.
+retplaying7 / previous A7 (0.00%)"
+29030,rr30,"Retention Rate A30.
+retplaying30 / previous A30 (0.00%)"
+,,
+29060,rr60,"Retention Rate A60.
+retplaying60 / previous A60 (0.00%)"
+29090,rr90,"Retention Rate A90.
+Retplaying90 / previous A90 (0.00%)"
+29017,rrw,"Retention Rate Calendar week.
+retplayingm / previous playing wau (0.00%)"
+29031,rrm,"Retention Rate Calendar month.
+retplayingm / previous playing mau (0.00%)"
+29003,rr3,"Retention Rate A3.
+retplaying3 / previous A3 (0.00%)"
+29014,rr14,"Retention Rate A14.
+retplaying14 / previous A14 (0.00%)"
+14001,clc1,Unique User login in previous day and not login in calculate day
+14007,clc7,Unique User login in previous 7 day and not login in this 7 day
+14030,clc30,Unique User login in previous 30 day and not login in this 30 day
+14031,clcm,Unique User login in previous month and not login in calculate month
+14060,clc60,Unique User login in previous 60 day and not login in this 60 day
+14090,clc90,Unique User login in previous 90 day and not login in this 90 day
+,cr1,CLC1 / previous playing a1 (0.00%)
+,cr7,CLC7 / previous playing a7 (0.00%)
+,cr30,CLC30 / previous playing a30 (0.00%)
+,crm,CLCM / previous playing mau (0.00%)
+,cr60,CLC60 / previous playing a60 (0.00%)
+,cr90,CLC90 / previous playing a90 (0.00%)
+27001,nrc1,New Register User login in previous N days of block and continuing login in current N days of block
+27007,nrc7,New Register User login in previous N days of block and continuing login in current N days of block
+27030,nrc30,New Register User login in previous N days of block and continuing login in current N days of block
+27031,nrcm,New Register User login in previous N days of block and continuing login in current N days of block
+27060,nrc60,New Register User login in previous N days of block and continuing login in current N days of block
+27090,nrc90,New Register User login in previous N days of block and continuing login in current N days of block
+28001,nrr1,(New Register User login in previous N days of block and continuing login in current N days of block) / previous
+28007,nrr7,(New Register User login in previous N days of block and continuing login in current N days of block) / previous
+28030,nrr30,(New Register User login in previous N days of block and continuing login in current N days of block) / previous
+28060,nrr60,(New Register User login in previous N days of block and continuing login in current N days of block) / previous
+28090,nrr90,(New Register User login in previous N days of block and continuing login in current N days of block) / previous
+28017,nrrw,(New Register User login in previous N days of block and continuing login in current N days of block) / previous
+28031,nrrm,(New Register User login in previous N days of block and continuing login in current N days of block) / previous
+28003,nrr3,(New Register User login in previous N days of block and continuing login in current N days of block) / previous
+28014,nrr14,(New Register User login in previous N days of block and continuing login in current N days of block) / previous
+15001,pu1,Unique User paying at least once in day
+15007,pu7,Unique User paying at least once in 7 day
+15030,pu30,Unique User paying at least once in 30 day
+15060,pu60,Unique User paying at least once in 60 day
+15090,pu90,Unique User paying at least once in 90 day
+15017,puw,Unique User paying at least once in a week
+15031,pum,Unique User paying at least once in a month
+15003,pu3,Unique User paying at least once in 3 days
+15014,pu14,Unique User paying at least once in 14 days
+16001,gr1,Gross revenue in day
+16007,gr7,Gross revenue in 7 day
+16030,gr30,Gross revenue in 30 day
+16060,gr60,Gross revenue in 60 day
+16090,gr90,Gross revenue in 90 day
+16017,grw,Gross revenue in a week
+16031,grm,Gross revenue in a month
+16003,gr3,Gross revenue in 3 days
+16014,gr14,Gross revenue in 14 days
+,cvr1,pu1 / a1 (0.00%)
+,cvr7,pu7 / a7 (0.00%)
+,cvr30,pu30 / a30 (0.00%)
+,cvr60,pu60 / a60 (0.00%)
+,cvr90,pu90 / a90 (0.00%)
+,cvrw,puw / aw (0.00%)
+,cvrm,pum / am (0.00%)
+,cvr3,pu3 / a3 (0.00%)
+,cvr14,pu14 / a14 (0.00%)
+,arppu1,gr1 / pu1
+,arppu7,gr7 / pu7
+,arppu30,gr30 / pu30
+,arppu60,gr60 / pu60
+,arppu90,gr90 / pu90
+,arppuw,grw/ puw
+,arppum,grm / pum
+,arppu3,gr3 / pu3
+,arppu14,gr14 / pu14
+,arpu1,gr1 / a1
+,arpu7,gr7 / a7
+,arpu30,gr30 / a30
+,arpu60,gr60 / a60
+,arpu90,gr90 / a90
+,arpuw,grw / aw
+,arpum,grm / am
+,arpu3,gr3 / a3
+,arpu14,gr14 / a14
+17001,rpc1,Unique User paying in previous day and continuing paying in calculate day
+17007,rpc7,Unique User paying in previous 7 day and continuing paying in this 7 day
+17030,rpc30,Unique User paying in previous 30 day and continuing paying in this 30 day
+17031,rpcm,Unique User paying in previous month and continuing paying in calculate month
+17060,rpc60,Unique User paying in previous 60 day and continuing paying in this 60 day
+17090,rpc90,Unique User paying in previous 90 day and continuing paying in this 90 day
+32001,prr1,New paying user in a day ago & retention paying in current day
+32007,prr7,New paying user in 7 days ago & retention paying in current day
+32030,prr30,New paying user in 30 days ago & retention paying in current day
+32060,prr60,New paying user in 60 days ago & retention paying in current day
+32090,prr90,New paying user in 90 days ago & retention paying in current day
+32003,prr3,New paying user in 3 days ago & retention paying in current day
+32014,prr14,New paying user in 14 days ago & retention paying in current day
+18001,cpc1,Unique User paying in previous day and not paying in calculate day
+18007,cpc7,Unique User paying in previous 7 day and not paying in this 7 day
+18030,cpc30,Unique User paying in previous 30 day and not paying in this 30 day
+18031,cpcm,Unique User paying in previous month and not paying in calculate month
+18060,cpc60,Unique User paying in previous 60 day and not paying in this 60 day
+18090,cpc90,Unique User paying in previous 90 day and not paying in this 90 day
+,cpr1,CPC1 / previous paying a1 (0.00%)
+,cpr7,CPC7 / previous paying a7 (0.00%)
+,cpr30,CPC30 / previous paying a30 (0.00%)
+,cprm,CPCM / previous paying mau (0.00%)
+,cpr60,CPC60 / previous paying a60 (0.00%)
+,cpr90,CPC90 / previous paying a90 (0.00%)
+19001,npu1,Unique new paying user in a day
+19007,npu7,Unique new paying user in a 7 day
+19030,npu30,Unique new paying user in a 30 day
+19060,npu60,Unique new paying user in a 60 day
+19090,npu90,Unique new paying user in a 90 day
+19017,npuw,Unique new paying user in a week
+19031,npum,Unique new paying user in a month
+19003,npu3,Unique new paying user in a 3 day
+19014,npu14,Unique new paying user in a 14 day
+20001,npu_gr1,New paying gross revenue in a day
+20007,npu_gr7,New paying gross revenue in 7 day
+20030,npu_gr30,New paying gross revenue in 30 day
+20060,npu_gr60,New paying gross revenue in 60 day
+20090,npu_gr90,New paying gross revenue in 90 day
+20017,npu_grw,New paying gross revenue in a week
+20031,npu_grm,New paying gross revenue in a month
+20003,npu_gr3,New paying gross revenue in 3 days
+20014,npu_gr14,New paying gross revenue in 14 days
+25001,nnpu1,new & paid user in 1 days of block
+25007,nnpu7,new & paid user in 7 days of block
+25030,nnpu30,new & paid user in 30 days of block
+25060,nnpu60,new & paid user in 60 days of block
+25090,nnpu90,new & paid user in 90 days of block
+25017,nnpuw,new & paid user in a week
+25031,nnpum,new & paid user in a month
+25003,nnpu3,new & paid user in 3 days of block
+25014,nnpu14,new & paid user in 14 days of block
+26001,nnpu_gr1,GR of NNPU1
+26007,nnpu_gr7,GR of NNPU7
+26030,nnpu_gr30,GR of NNPU30
+26060,nnpu_gr60,GR of NNPU60
+26090,nnpu_gr90,GR of NNPU90
+26017,nnpu_grw,GR of NNPUW
+26031,nnpu_grm,GR of NNPUM
+26003,nnpu_gr3,GR of NNPU3
+26014,nnpu_gr14,GR of NNPU14
+21001,nru1,Number of accounts that log-in to the game for the first time or after 30 days
+22001,ngr1,NRU1 gross revenue
+,nru1 / a1,nru1 / a1 (0.00%)
+23002,rr2,%(0.00%)NRU on day 1 that return on day 2/NRU on day 1
+23007,rr7,%(0.00%)NRU on day 1 that return on day 7/NRU on day 1
+24001,cr1,%(0.00%)NRU on day 1 that paid on day 1/NRU on day 1
+24003,cr3,%(0.00%)NRU on day 1 that paid at least once on day 1 to day 3/NRU on day 1
+,,
+,,"
+"

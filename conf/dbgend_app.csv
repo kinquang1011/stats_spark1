@@ -1,0 +1,149 @@
+appID,appName,ubCode,AppDesc,IsMobi
+1,App Test 1,App Test 1,Ứng dụng 1,0
+2,ZaloCredits,ZaloCredits,ZaloCredits,1
+3,MobileSDK,MobileSDK,MobileSDK,1
+4,TBMT,TBMT,Thẻ Bài Ma Thuật,1
+5,EFPL,EFPL,Efun Platform,1
+6,game,game,365App,1
+7,Ulabs_VuiBanCa,Ulabs_VuiBanCa,Vui Bắn Cá,1
+8,TBMT Platform,TBMT Platform,Thẻ Bài Ma Thuật Platform,0
+9,ThoiLoanM,ThoiLoanM,Thời Loạn Mobile,1
+10,FARMPRO2,FARMPRO2,Nông trại Pro 2,0
+11,AHCH,AHCH,Anh Hùng Chiến Hồn (JB),1
+12,VLLK,VLLK,Võ Lâm Luận Kiếm,1
+13,Gunny Mobi,Gunny Mobi,Gunny Mobile,1
+14,DTTK,DTTK,Dota Truyền Kỳ,1
+15,DPTQ,DPTQ,Đại Phá Tam Quốc,1
+16,ZaloPayTelco,ZaloPayTelco,ZaloPay,1
+17,ZaloPaySMS,ZaloPaySMS,ZaloPay,1
+18,TamQuocXungHung,TamQuocXungHung,Tam Quốc Xưng Hùng,1
+19,Zuni,Zuni,Zuni,0
+20,FH,FH,Fish Hunt,1
+21,FARM,FARM,Farmery Mobile,1
+22,MPCOTUONG,MPCOTUONG,MyPlay Cờ Tướng,1
+23,MPCARO,MPCARO,MyPlay Caro,1
+24,MPTALA,MPTALA,MyPlay Tá Lả,1
+25,MPBINH,MPBINH,MyPlay Binh,1
+26,MPTIENLEN,MPTIENLEN,MyPlay Tiến Lên,1
+27,MPXITO,MPXITO,MyPlay Xì Tố,1
+28,MPPOKER,MPPOKER,MyPlay Poker,1
+29,THOILOAN,THOILOAN,Thời Loạn,0
+30,SGMB,SGMB,Khu Vườn Trên Mây Mobile,1
+31,LM,LM,Liên Minh Anh Hùng,1
+33,FARMZPP,FARMZPP,Farmery ZingPlay Portal,1
+34,ZINZIN,ZINZIN,Zinzin,1
+35,FARMWEB,FARMWEB,Farmery Web,0
+36,MPBIDA,MPBIDA,MyPlay Bida,1
+37,MPBIDACARD,MPBIDACARD,MyPlay Bida Card,1
+38,ZB,ZB,Giải Cứu Thế Giới,0
+39,VLCB,VLCB,Tiểu Võ Lâm,0
+40,VLMB,VLHT,Võ Lâm Huyền Thoại,1
+41,MPBACAY,MPBACAY,MyPlay Ba Cây,1
+42,CANDYRUN,CANDYRUN,Candy Run,1
+43,CUUTOC,CUUTOC,Cửu Tộc,1
+44,ICA,ICA,iCá,1
+45,ZingCredits,ZingCredits,ZingCredits,0
+46,ThanTuong,ThanTuong,Thần Tướng,1
+47,CG_ZingCredits,CG_ZingCredits,CG_ZingCredits,0
+48,TimXeKhach,TimXeKhach,Tìm Xe Khách,1
+49,ZaloPayZingXu,ZaloPay ZingXu,ZaloPay ZingXu,1
+50,KS3D_HAILOCDAUXUAN,KS3D_HAILOCDAUXUAN,Hái Lộc Đầu Xuân,0
+51,ccTalk,ccTalk,ccTalk,0
+52,BanCaTruyenKi,BanCaTruyenKi,Bắn Cá Truyền Kì,1
+53,ZS_MungLeLonTrungNacTha,ZS_MungLeLonTrungNacTha,ZS_MungLeLonTrungNacTha - Promotion,0
+54,ThapPhong_Wallet,ThapPhong_Wallet,Ví Tháp Phòng,1
+55,TPDCMobile,TPDCMobile,Tháp Phòng Đại Chiến Mobile,1
+56,KS3DWEBSHOP,KS3DWEBSHOP,Thien Long Tam Bao - Promotion,0
+57,DMFBS2,DMFBS2,Diamond Reborn,1
+58,Thirdparty-SGame,Thirdparty-SGame,Thirdparty-SGame,0
+59,Thirdparty-EPAY,Thirdparty-EPAY,Thirdparty-EPAY,0
+60,Thirdparty-TTVONLINE,Thirdparty-TTVONLINE,Thirdparty TTVONLINE,0
+61,zingspeed,zingspeed,Zing Speed Vip,0
+62,SMS-ZingWallet,SMS-ZingWallet,Ví ZingXu,1
+63,Thirdparty-HomeDirect,Thirdparty-HomeDirect,Thirdparty HomeDirect,0
+64,Thirdparty-MWork,Thirdparty-MWork,Thirdparty MWork,0
+65,Thirdparty-SSGROUP,Thirdparty-SSGROUP,Thirdparty-SSGROUP,0
+66,Thirdparty-FSHARE,Thirdparty-FSHARE,Thirdparty-FSHARE,0
+67,WJX2BBR,WJX2BBR,Kiếm Thế Bách Bảo Rương,0
+32,10HA7,10HA7,10 Hả 7,1
+10001,volam1,jx1,Vo Lam 1,0
+10003,phongthan,fs,Phong Than,0
+10005,boom,bnb,Boom,0
+10012,ZingWallet,ZingWallet,Túi ZingXu,0
+10014,volam2,jx2,Vo Lam 2,0
+10037,volamfree,jx1f,volamfree,0
+10049,ZG,ZG,Gunny,0
+10050,zingspeed,zs,ZingSpeed,0
+10057,kiemthe,wjx,Kiem The,0
+10073,Khu Vuon Tren May,Khu Vuon Tren May,Khu Vuon Tren May,0
+10083,ZingPlay - Caro,ZingPlay - Caro,ZingPlay - Caro,0
+10087,ZingPlay - Ta La,ZingPlay - Ta La,ZingPlay - Ta La,0
+10088,ZingPlay - Tien Len,ZingPlay - Tien Len,ZingPlay - Tien Len,0
+10090,VLCM,nkvn,Võ Lâm Chi Mộng,0
+10091,ZingPlay - Xi To,ZingPlay - Xi To,ZingPlay - Xi To,0
+10095,ZingPlay - Poker My,ZingPlay - Poker My,ZingPlay - Poker My,0
+10096,ZingPlay - Bida 9 Bi,ZingPlay - Bida 9 Bi,ZingPlay - Bida 9 Bi,0
+10103,ngoalong,NLVN,Ngoa Long,0
+10104,Hang Rong,SVFB,Hang Rong,0
+10109,longtuong,LTVN,long tuong,0
+10113,Dao Rong,CZGSS,Dao Rong,0
+10120,WTVN,WTVN,Thần Khúc,0
+10122,ZingPlay - Mau Binh,ZingPlay - Mau Binh,ZingPlay - Mau Binh,0
+10124,ZingPlay - Bida Card,ZingPlay - Bida Card,ZingPlay - Bida Card,0
+10125,Co Tuong ZingPlay,Co Tuong ZingPlay,Co Tuong ZingPlay,0
+10129,mongtamquoc,MSG,Mong Tam Quoc,0
+10133,Long Tuong ZingPlay,CZGSS,Long Tuong ZingPlay,0
+10141,aimynhan,TMN,ai my nhan,0
+10149,CCTalk ZingPay,CCTalk ZingPay,CCTalk ZingPay,0
+10157,vlcmzingme,NKVN,Vo Lam Chi Mong ZingMe,0
+10161,vlcmzingplay,NKVN,Vo Lam Chi Mong ZingPlay,0
+10169,aimynhanyahoo,TMNY,aimynhanyahoo,0
+10170,vlcmvuigame,NKVN,Vo Lam Chi Mong VuiGame,0
+10174,Thoi Loan,Thoi Loan,Thoi Loan,0
+10184,aimynhan,TMN,,0
+10185,aimynhanvuigame,TMN-VG,aimynhanvuigame,0
+10186,thapphong,thapphong,thap phong,0
+10192,aimynhanzingplay,TMN-ZP,aimynhanzingplay,0
+10197,Nhai Co Tam Quoc,JJSG,Nhai Co Tam Quoc,0
+10219,Farmery Web,Farmery Web,Farmery Web,0
+10220,lienminhanhhung,lienminhanhhung,lien minh anh hung,0
+10227,Ngu Long,ylzt,Ngu Long,0
+10235,PV,fv,Phong Vân,0
+10238,congthanhchienjx1,jx1ctc,Cong Thanh Chien Vo Lam 1,0
+10241,vlcm2,vlcm2,Vo Lam Chi Mong 2,0
+10242,Vo Lam Huyen Thoai,jx1f,Vo Lam Huyen Thoai,0
+10244,tanthienlong,ttl3d,Tan Thien Long,0
+10246,docbothienha,dbth,Doc Bo Thien Ha,0
+10254,bachchien,bc,Bach Chien Vo Song,0
+10257,phongthanweb,FWS,phongthanweb,0
+10258,hacamchiquang,HACQ,Hac Am Chi Quang,0
+10259,gunnyht,zg,Gunny Huyen Thoai,0
+10260,vohon2,wh2,vo hon 2,0
+10261,KT2,wjx2,Kiếm Thế 2,0
+10265,congthanhchienweb,ctc,Cong Thanh Chien Web,0
+10269,tb,tb,Dau Pha Thuong Khung,0
+10270,Bubble Fighter,BF,Bubble Fighter,0
+10271,cuutinh,ct,Cuu Tinh,0
+10274,mu,mu,Game MU,0
+10276,baophong,baophong,Bao Phong,0
+10277,bachchien2,bc2,Game Bách Chiến 2,0
+10278,xathu,HX,Xa Thu,0
+10281,TTHS,TTHS,Thien Tuong hung Su,0
+10282,thienthu,TG,Thien Thu,0
+10283,Thien Long Bat Bo Web,TLBBW,Thien Long Bat Bo Web,0
+10285,Long Pha,LP,Long Pha,0
+10289,TD,TD,Tay Du Truyen Ky,0
+10290,Linh Vuc,LV,Linh Vuc,0
+10293,Bach Chien 3,BC3,Bach Chien 3,0
+10294,Thinh The Tam Quoc,TTTQ,Thinh The Tam Quoc,0
+10295,Dai Chien Than,DCT,Dai Chien Than,0
+10151,2U - SKY5,SKY5,2U - SKY5,0
+10222,9K,9K,9K Truyền Kỳ,0
+10251,MU Dai Thien Su,CK,MU Dai Thien Su,0
+10297,Kiem Vu,KV,Kiem Vu Giang Ho,0
+10298,Thuc Son,TS,Thuc Son Vo Song,0
+10299,narutotruyenky,naruto,Naruto Truyen Ky,0
+15002,Gunny Mobi,gnm,Guny Mobi,0
+15003,Ngoi Sao Hoang Cung,hpt,Ngoi Sao Hoang Cung,0
+15006,Dau Pha Thuong Khung Mobile,dptkm,Dau Pha Thuong Khung Mobile,0
+10307,Thanh Van Chi,tvc,Thanh Van Chi,0

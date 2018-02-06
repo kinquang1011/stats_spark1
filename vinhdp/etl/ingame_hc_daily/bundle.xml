@@ -1,0 +1,103 @@
+<bundle-app name="UB :: ETL :: VDP :: ${group} - ${type} - Spark1 Bundle" xmlns="uri:oozie:bundle:0.2">
+    <parameters>
+        <property><name>coordTimeZone</name><value>Asia/Ho_Chi_Minh</value></property>
+        <property><name>coordTimeout</name><value>720</value></property>
+        <property><name>coordConcurrency</name><value>1</value></property>
+        <property><name>startDate</name><value>${startDate}</value></property>
+        <property><name>endDate</name><value>${endDate}</value></property>
+        <property><name>frequency</name><value>1</value></property>
+        <property><name>doneFlag</name><value>_SUCCESS</value></property>
+        <property><name>sparkMaster</name><value>yarn-cluster</value></property>
+        <property><name>statsSparkJar</name><value>stats-spark.jar</value></property>
+    </parameters>
+	
+    <controls>
+        <kick-off-time>${kickOffTime}</kick-off-time>
+    </controls>
+    
+    <!-- hcatalog data source -->
+    <coordinator name="SPARK :: VDP :: hpt - Daily ETL Coord">
+        <app-path>${bundleApplicationPath}/coordinatorhc.xml</app-path>
+        <configuration>
+            <property><name>sparkClass</name><value>vng.stats.ub.normalizer.hcatalog.HptFormatter</value></property>
+            <property><name>gameCode</name><value>hpt</value></property>
+            <property><name>loginName</name><value>login</value></property>
+            <property><name>logoutName</name><value>logout</value></property>
+            <property><name>paymentName</name><value>recharge</value></property>
+            <property><name>ccuName</name><value>ccu</value></property>
+        </configuration>
+    </coordinator>
+    
+    <coordinator name="SPARK :: VDP :: fishot - Daily ETL Coord">
+        <app-path>${bundleApplicationPath}/coordinatorhc.xml</app-path>
+        <configuration>
+            <property><name>sparkClass</name><value>vng.stats.ub.normalizer.hcatalog.FishotFormatter</value></property>
+            <property><name>gameCode</name><value>fishot</value></property>
+            <property><name>loginName</name><value>login</value></property>
+            <property><name>logoutName</name><value>logout</value></property>
+            <property><name>paymentName</name><value>recharge</value></property>
+            <property><name>ccuName</name><value>login</value></property>
+        </configuration>
+    </coordinator>
+    
+    <coordinator name="SPARK :: VDP :: gunpow - Daily ETL Coord">
+        <app-path>${bundleApplicationPath}/coordinatorhc.xml</app-path>
+        <configuration>
+            <property><name>sparkClass</name><value>vng.stats.ub.normalizer.hcatalog.GunPowFormatter</value></property>
+            <property><name>gameCode</name><value>ddd2mp2</value></property>
+            <property><name>loginName</name><value>login</value></property>
+            <property><name>logoutName</name><value>logout</value></property>
+            <property><name>paymentName</name><value>recharge</value></property>
+            <property><name>ccuName</name><value>ccu</value></property>
+        </configuration>
+    </coordinator>
+    
+    <coordinator name="SPARK :: VDP :: cptsea - Daily ETL Coord">
+        <app-path>${bundleApplicationPath}/coordinatorhc.xml</app-path>
+        <configuration>
+            <property><name>sparkClass</name><value>vng.stats.ub.normalizer.hcatalog.CtpSeaFormatter</value></property>
+            <property><name>gameCode</name><value>ctpsea</value></property>
+            <property><name>loginName</name><value>login</value></property>
+            <property><name>logoutName</name><value>logout</value></property>
+            <property><name>paymentName</name><value>recharge</value></property>
+            <property><name>ccuName</name><value>ccu</value></property>
+        </configuration>
+    </coordinator>
+    
+    <coordinator name="SPARK :: VDP :: nlmb - Daily ETL Coord">
+        <app-path>${bundleApplicationPath}/coordinatorhc.xml</app-path>
+        <configuration>
+            <property><name>sparkClass</name><value>vng.stats.ub.normalizer.hcatalog.NlmbFormatter</value></property>
+            <property><name>gameCode</name><value>nlmb</value></property>
+            <property><name>loginName</name><value>login</value></property>
+            <property><name>logoutName</name><value>logout</value></property>
+            <property><name>paymentName</name><value>recharge</value></property>
+            <property><name>ccuName</name><value>recharge</value></property>
+        </configuration>
+    </coordinator>
+    
+    <coordinator name="SPARK :: VDP :: gnm - Daily ETL Coord">
+        <app-path>${bundleApplicationPath}/coordinatorhc.xml</app-path>
+        <configuration>
+            <property><name>sparkClass</name><value>vng.stats.ub.normalizer.hcatalog.GnmFormatter</value></property>
+            <property><name>gameCode</name><value>gnm</value></property>
+            <property><name>loginName</name><value>login</value></property>
+            <property><name>logoutName</name><value>login</value></property>
+            <property><name>paymentName</name><value>recharge</value></property>
+            <property><name>ccuName</name><value>ccu</value></property>
+        </configuration>
+    </coordinator>
+    
+    <coordinator name="SPARK :: VDP :: coccmsea - Daily ETL Coord">
+        <app-path>${bundleApplicationPath}/coordinatorhc.xml</app-path>
+        <configuration>
+            <property><name>sparkClass</name><value>vng.stats.ub.normalizer.hcatalog.CoccmSeaFormatter</value></property>
+            <property><name>gameCode</name><value>coccmsea</value></property>
+            <property><name>loginName</name><value>login</value></property>
+            <property><name>logoutName</name><value>logout</value></property>
+            <property><name>paymentName</name><value>recharge</value></property>
+            <property><name>ccuName</name><value>recharge</value></property>
+        </configuration>
+    </coordinator>
+    
+</bundle-app>

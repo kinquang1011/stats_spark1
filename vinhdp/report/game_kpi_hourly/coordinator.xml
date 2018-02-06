@@ -1,0 +1,36 @@
+<coordinator-app name="SPARK :: VDP :: ${group} - ${gameCode} - ${type}" frequency="${coord:minutes(60)}"
+        start="${startDate}" end="${endDate}"
+        timezone="UTC"
+        xmlns="uri:oozie:coordinator:0.4"
+        xmlns:sla="uri:oozie:sla:0.2">
+
+    <controls>
+        <timeout>10</timeout>
+        <concurrency>${coordConcurrency}</concurrency>
+    </controls>
+
+    <action>
+        <workflow>
+            <app-path>${bundleApplicationPath}</app-path>
+            <configuration>
+                <property>
+                    <name>logDate</name>
+                    <value>${coord:formatTime(coord:dateOffset(coord:nominalTime(), -1, 'HOUR'), "yyyy-MM-dd")}</value>
+                </property>
+                <property>
+                    <name>hourly</name>
+                    <value>${coord:formatTime(coord:dateOffset(coord:nominalTime(), -1, 'HOUR'), "HH_mm")}</value>
+                </property>
+                <property>
+                    <name>nominalTime</name>
+                    <value>${coord:nominalTime()}</value>
+                </property>
+				<property>
+                    <name>actualTime</name>
+                    <value>${coord:actualTime()}</value>
+                </property>
+            </configuration>
+        </workflow>
+    </action>
+</coordinator-app>
+

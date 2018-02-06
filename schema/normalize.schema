@@ -1,0 +1,9 @@
+account_login: game_code: String, log_date: String, uid: String, user_id: String, open_id: String, acn: String, sid: String, rid: String, rnm: String, online_time: Long, amount: Long, level: Long, ip: String, device_id: String
+
+account_paying:
+
+account_register:
+
+account_first_pay:
+
+account_new_register:

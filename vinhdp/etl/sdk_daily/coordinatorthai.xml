@@ -1,0 +1,51 @@
+<coordinator-app name="SPARK :: VDP :: ${group} - ${gameCode} - ${type}" frequency="${coord:days(1)}"
+        start="${startDate}" end="${endDate}"
+        timezone="${coordTimeZone}"
+        xmlns="uri:oozie:coordinator:0.4"
+        xmlns:sla="uri:oozie:sla:0.2">
+
+    <controls>
+        <timeout>${coordTimeout}</timeout>
+        <concurrency>${coordConcurrency}</concurrency>
+    </controls>
+
+    <datasets>
+        <dataset name="dataset1" frequency="${coord:days(1)}" initial-instance="${startDate}" timezone="${coordTimeZone}">
+            <uri-template>${inputPath}/Web_${YEAR}-${MONTH}-${DAY}/${gameCodeU}_Login_InfoLog-${YEAR}-${MONTH}-${DAY}.gz</uri-template>
+            <done-flag></done-flag>
+        </dataset>
+
+        <dataset name="dataset2" frequency="${coord:days(1)}" initial-instance="${startDate}" timezone="${coordTimeZone}">
+            <uri-template>${inputPath}/Web_${YEAR}-${MONTH}-${DAY}/Log_${gameCodeU}_DBGAdd-${YEAR}-${MONTH}-${DAY}.gz</uri-template>
+            <done-flag></done-flag>
+        </dataset>
+    </datasets>
+
+    <input-events>
+        <data-in name="datasetEvent1" dataset="dataset1">
+            <start-instance>${coord:current(-1)}</start-instance>
+            <end-instance>${coord:current(0)}</end-instance>
+        </data-in>
+        <data-in name="datasetEvent2" dataset="dataset2">
+            <start-instance>${coord:current(-1)}</start-instance>
+            <end-instance>${coord:current(0)}</end-instance>
+        </data-in>
+    </input-events>
+
+    <action>
+        <workflow>
+            <app-path>${bundleApplicationPath}</app-path>
+            <configuration>
+                <property>
+                    <name>logDate</name>
+                    <value>${coord:formatTime(coord:dateOffset(coord:nominalTime(), 0, 'DAY'), "yyyy-MM-dd")}</value>
+                </property>
+                <property>
+                    <name>nominalTime</name>
+                    <value>${coord:nominalTime()}</value>
+                </property>
+            </configuration>
+        </workflow>
+    </action>
+</coordinator-app>
+

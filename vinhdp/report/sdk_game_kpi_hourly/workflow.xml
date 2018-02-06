@@ -1,0 +1,59 @@
+<workflow-app name="SPARK :: VDP :: ${group} - ${gameCode} - ${type} - ${logDate} - ${hourly}" xmlns="uri:oozie:workflow:0.5" xmlns:sla="uri:oozie:sla:0.2">
+    
+    <global>
+        <job-tracker>${jobTracker}</job-tracker>
+        <name-node>${nameNode}</name-node>
+        <configuration>
+            <property><name>mapreduce.job.queuename</name><value>production</value></property>
+            <property><name>oozie.launcher.mapred.job.queue.name</name><value>interactive</value></property>
+        </configuration>
+    </global>
+    
+    <start to="etl" />
+    
+    <action name="etl">
+       <spark xmlns="uri:oozie:spark-action:0.1">
+	       <job-tracker>${jobTracker}</job-tracker>
+	       <name-node>${nameNode}</name-node>
+		   <master>${sparkMaster}</master>
+	       <name>spark-${group}-etl-${gameCode}-${type}-${logDate}-${hourly}</name>
+           <class>vng.stats.ub.normalizer.v2.SdkFormatterHourly</class>
+	       <jar>${nameNode}${bundleApplicationPath}/lib/${statsSparkJar}</jar>
+           <spark-opts>${sparkOpts}</spark-opts>
+           <arg>logDate=${logDate}</arg>
+		   <arg>gameCode=${gameCode}</arg>
+		   <arg>inputPath=${inputPath}</arg>
+		   <arg>extraTime=${extraTime}</arg>
+		   <arg>inputHourlyPath=${inputHourlyPath}</arg>
+		   <arg>outputFolder=${outputFolder}</arg>
+        </spark>
+        <ok to="report"/>
+        <error to="kill"/>
+    </action>
+
+    <action name="report">
+       <spark xmlns="uri:oozie:spark-action:0.1">
+	       <job-tracker>${jobTracker}</job-tracker>
+	       <name-node>${nameNode}</name-node>
+		   <master>${sparkMaster}</master>
+	       <name>spark-${group}-${gameCode}-${type}-${logDate}-${hourly}</name>
+           <class>vng.stats.ub.report.sdk.SdkReportHourly</class>
+	       <jar>${nameNode}${bundleApplicationPath}/lib/${statsSparkJar}</jar>
+           <spark-opts>${sparkOpts}</spark-opts>
+           <arg>logDate=${logDate}</arg>
+		   <arg>gameCode=${gameCode}</arg>
+		   <arg>inputPath=${inputPath}</arg>
+		   <arg>extraTime=${extraTime}</arg>
+		   <arg>inputHourlyPath=${inputHourlyPath}</arg>
+        </spark>
+        <ok to="end"/>
+        <error to="kill"/>
+    </action>
+    
+    <kill name="kill">
+        <message>UB :: VDP :: ${group} -${gameCode} - ${type} - ${logDate} - ${hourly} - workflow fail</message>
+    </kill>
+    <end name="end"/>
+</workflow-app>
+
+

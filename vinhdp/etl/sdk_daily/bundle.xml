@@ -1,0 +1,130 @@
+<bundle-app name="UB :: ETL :: VDP :: ${group} - ${type} - Spark1 Bundle" xmlns="uri:oozie:bundle:0.2">
+    <parameters>
+        <property><name>coordTimeZone</name><value>Asia/Ho_Chi_Minh</value></property>
+        <property><name>coordTimeout</name><value>14400</value></property>
+        <property><name>coordConcurrency</name><value>1</value></property>
+        <property><name>startDate</name><value>${startDate}</value></property>
+        <property><name>endDate</name><value>${endDate}</value></property>
+        <property><name>frequency</name><value>1</value></property>
+        <property><name>doneFlag</name><value>_SUCCESS</value></property>
+        <property><name>sparkMaster</name><value>yarn-cluster</value></property>
+        <property><name>statsSparkJar</name><value>stats-spark.jar</value></property>
+        <property><name>sparkClass</name><value>vng.stats.ub.normalizer.v2.SdkFormatter</value></property>
+        
+        <property><name>inputPath</name><value>/ge/gamelogs/sdk</value></property>
+        <property><name>outputFolder</name><value>sdk_data</value></property>
+        <property><name>extraTime</name><value>0</value></property>
+    </parameters>
+	
+    <controls>
+        <kick-off-time>${kickOffTime}</kick-off-time>
+    </controls>
+    
+    <coordinator name="SPARK :: VDP :: 3qmobile - Daily ETL Coord">
+        <app-path>${bundleApplicationPath}/coordinator.xml</app-path>
+        <configuration>
+            <property><name>gameCodeU</name><value>3QMOBILE</value></property>
+            <property><name>gameCode</name><value>3qmobile</value></property>
+        </configuration>
+    </coordinator>
+
+    <coordinator name="SPARK :: VDP :: dptk - Daily ETL Coord">
+        <app-path>${bundleApplicationPath}/coordinator.xml</app-path>
+        <configuration>
+            <property><name>gameCodeU</name><value>DPTK</value></property>
+            <property><name>gameCode</name><value>dptk</value></property>
+        </configuration>
+    </coordinator>
+
+    <coordinator name="SPARK :: VDP :: nikki - Daily ETL Coord">
+        <app-path>${bundleApplicationPath}/coordinator.xml</app-path>
+        <configuration>
+            <property><name>gameCodeU</name><value>NIKKI</value></property>
+            <property><name>gameCode</name><value>nikki</value></property>
+        </configuration>
+    </coordinator>
+
+    <coordinator name="SPARK :: VDP :: tlbbm - Daily ETL Coord">
+        <app-path>${bundleApplicationPath}/tlbbm_coordinator.xml</app-path>
+        <configuration>
+            <property><name>gameCodeU</name><value>TLBBM</value></property>
+            <property><name>gameCode</name><value>tlbbm</value></property>
+        </configuration>
+    </coordinator>
+    
+    <coordinator name="SPARK :: VDP :: cack - Daily ETL Coord">
+        <app-path>${bundleApplicationPath}/coordinator.xml</app-path>
+        <configuration>
+            <property><name>gameCodeU</name><value>CACK</value></property>
+            <property><name>gameCode</name><value>cack</value></property>
+        </configuration>
+    </coordinator>
+
+    <coordinator name="SPARK :: VDP :: bklr - Daily ETL Coord">
+        <app-path>${bundleApplicationPath}/coordinator.xml</app-path>
+        <configuration>
+            <property><name>gameCodeU</name><value>BKLR</value></property>
+            <property><name>gameCode</name><value>bklr</value></property>
+        </configuration>
+    </coordinator>
+
+	<coordinator name="SPARK :: VDP :: stct - Daily ETL Coord">
+        <app-path>${bundleApplicationPath}/coordinator.xml</app-path>
+        <configuration>
+            <property><name>gameCodeU</name><value>STCT</value></property>
+            <property><name>gameCode</name><value>stct</value></property>
+            <property><name>inputPath</name><value>/ge/gamelogs/sdk_sea</value></property>
+            <property><name>extraTime</name><value>25200000</value></property>
+        </configuration>
+    </coordinator> 
+    
+    <coordinator name="SPARK :: VDP :: siamplayindo - Daily ETL Coord">
+        <app-path>${bundleApplicationPath}/coordinator.xml</app-path>
+        <configuration>
+            <property><name>gameCodeU</name><value>SIAMPLAYINDO</value></property>
+            <property><name>gameCode</name><value>siamplayindo</value></property>
+            <property><name>extraTime</name><value>25200000</value></property>
+            <property><name>inputPath</name><value>/ge/gamelogs/sdk_sea</value></property>
+            <property><name>changeRate</name><value>1.724</value></property>
+        </configuration>
+    </coordinator>
+    
+    <coordinator name="SPARK :: VDP :: ddd2mp2 - Daily ETL Coord">
+        <app-path>${bundleApplicationPath}/coordinator.xml</app-path>
+        <configuration>
+            <property><name>gameCodeU</name><value>GUNGA</value></property>
+            <property><name>gameCode</name><value>ddd2mp2</value></property>
+        </configuration>
+    </coordinator>
+    
+    <coordinator name="SPARK :: VDP :: hpt - Daily ETL Coord">
+        <app-path>${bundleApplicationPath}/coordinator.xml</app-path>
+        <configuration>
+            <property><name>gameCodeU</name><value>HPT</value></property>
+            <property><name>gameCode</name><value>hpt</value></property>
+        </configuration>
+    </coordinator>
+    
+    <!-- SDK THAI format  -->
+    <coordinator name="SPARK :: VDP :: siamplay - Daily ETL Coord">
+        <app-path>${bundleApplicationPath}/coordinatorthai.xml</app-path>
+        <configuration>
+            <property><name>gameCodeU</name><value>SIAMPLAY</value></property>
+            <property><name>gameCode</name><value>siamplay</value></property>
+            <property><name>sparkClass</name><value>vng.stats.ub.normalizer.v2.SdkThaiFormatter</value></property>
+            <property><name>inputPath</name><value>/ge/gamelogs/sdk_thai</value></property>
+            <property><name>changeRate</name><value>638</value></property>
+        </configuration>
+    </coordinator>
+    
+    <coordinator name="SPARK :: VDP :: nikkisea - Daily ETL Coord">
+        <app-path>${bundleApplicationPath}/coordinator.xml</app-path>
+        <configuration>
+            <property><name>gameCodeU</name><value>NIKKISEA</value></property>
+            <property><name>gameCode</name><value>nikkisea</value></property>
+            <property><name>inputPath</name><value>/ge/gamelogs/sdk_sea</value></property>
+            <property><name>extraTime</name><value>25200000</value></property>
+        </configuration>
+    </coordinator> 
+    
+</bundle-app>
